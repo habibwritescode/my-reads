@@ -7,7 +7,8 @@ import { Route } from 'react-router-dom'
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
+    searchedBooks: []
   }
 
   componentDidMount() {
@@ -15,8 +16,29 @@ class BooksApp extends React.Component {
       .then(books => {
         this.setState({
           books: books
-        }, () => console.log(this.state.books))
+        }, () => console.log('books', this.state.books))
       })
+  }
+
+  search = (query) => {
+    if (query.length > 0) {
+      BooksAPI.search(query)
+        .then(books => {
+          if (books.error) {
+            this.setState({
+              searchedBooks: []
+            })
+          } else {
+            this.setState({
+              searchedBooks: books
+            }, () => console.log('search', this.state.searchedBooks))
+          }
+        })
+    } else {
+      this.setState({
+        searchedBooks: []
+      })
+    }
   }
 
   render() {
@@ -29,7 +51,7 @@ class BooksApp extends React.Component {
         )} />
 
         <Route path='/search' render={() => (
-          <SearchPage />
+          <SearchPage searchedBooks={this.state.searchedBooks} search={this.search} />
         )} />
       </div>
     )
