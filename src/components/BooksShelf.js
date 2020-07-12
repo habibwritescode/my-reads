@@ -21,15 +21,15 @@ class BooksShelf extends Component {
                     <div>
                         <div className="bookshelf">
                             <h2 className="bookshelf-title">Currently Reading</h2>
-                            <CurrentlyReading books={books} />
+                            <CurrentlyReading books={books} handleSelect={this.props.handleSelect} />
                         </div>
                         <div className="bookshelf">
                             <h2 className="bookshelf-title">Want to Read</h2>
-                            <WantToRead books={books} />
+                            <WantToRead books={books} handleSelect={this.props.handleSelect} />
                         </div>
                         <div className="bookshelf">
                             <h2 className="bookshelf-title">Read</h2>
-                            <Read books={books} />
+                            <Read books={books} handleSelect={this.props.handleSelect} />
                         </div>
                     </div>
                 </div>

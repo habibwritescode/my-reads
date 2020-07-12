@@ -32,7 +32,7 @@ class SearchPage extends Component {
                 <div className="search-books-results">
                     <ol className="books-grid">
                         {this.props.searchedBooks.map(book => (
-                            <Book book={book} />
+                            <Book book={book} handleSelect={() => this.props.handleSelect(book)}/>
                         ))}
                     </ol>
                 </div>
