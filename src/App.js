@@ -52,7 +52,6 @@ class BooksApp extends React.Component {
 
   handleSelect = (shelf, book) => {
     console.log('select', shelf, book)
-    // const { value } = event.target;
     BooksAPI.update(book.id, shelf)
       .then(() => (this.setState((prevstate) => ({
         books: prevstate.books.filter(b => {
@@ -66,11 +65,12 @@ class BooksApp extends React.Component {
   }
 
   // Add books from search page to bookshelf
-  // handleSelectSearchPage = (book) => {
-  //   this.setState(prevState => ({
-  //     books: [...prevState.books, book]
-  //   }))
-  // }
+  handleSelectSearchPage = (value, book) => {
+    book.shelf = value
+    this.setState(prevState => ({
+      books: [...prevState.books, book]
+    }), () => console.log('selctUpdate', this.state.books))
+  }
 
   render() {
     return (
@@ -86,7 +86,8 @@ class BooksApp extends React.Component {
           <SearchPage
             searchedBooks={this.state.searchedBooks}
             search={this.search}
-            handleSelect={this.handleSelectSearchPage} />
+            handleSelect={this.handleSelectSearchPage}
+            books={this.state.books} />
         )} />
       </div>
     )
