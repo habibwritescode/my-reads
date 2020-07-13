@@ -6,7 +6,7 @@ class Book extends React.Component {
     render() {
         const { book } = this.props
         return (
-            <li key={book.id}>
+            <li>
                 <div className="book">
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: book.imageLinks ? (`url(${book.imageLinks.thumbnail})`) : '' }}></div>
@@ -22,7 +22,7 @@ class Book extends React.Component {
                     </div>
                     <div className="book-title">{book.title}</div>
                     {book.authors ? book.authors.map(author => (
-                        <div className="book-authors">{author}</div>
+                        <div key={author} className="book-authors">{author}</div>
                     ))
                         : ''
                     }

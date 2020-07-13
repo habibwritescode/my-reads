@@ -8,7 +8,7 @@ const CurrentlyReading = (props) => {
         <div className="bookshelf-books">
             <ol className="books-grid">
                 {currentlyReading.map(book => (
-                    <Book book={book} handleSelect={props.handleSelect} />
+                    <Book book={book} key={book.id} handleSelect={props.handleSelect} />
                 ))}
             </ol>
         </div>

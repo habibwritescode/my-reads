@@ -19,7 +19,7 @@ class SearchPage extends Component {
         return (
             <div className="search-books" >
                 <div className="search-books-bar">
-                    <Link className="close-search" to='/'>Close</Link>
+                    <Link className="close-search" to='/' onClick={() => console.log('link',this.props.books)}>Close</Link>
                     <div className="search-books-input-wrapper">
                         <input
                             type="text"
@@ -32,7 +32,7 @@ class SearchPage extends Component {
                 <div className="search-books-results">
                     <ol className="books-grid">
                         {this.props.searchedBooks.map(book => (
-                            <Book book={book} handleSelect={() => this.props.handleSelect(book)}/>
+                            <Book book={book} key={book.id} handleSelect={this.props.handleSelect} />
                         ))}
                     </ol>
                 </div>
