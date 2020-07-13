@@ -16,7 +16,7 @@ class BooksApp extends React.Component {
       .then(books => {
         this.setState({
           books: books
-        }, () => console.log('books', this.state.books))
+        })
       })
   }
 
@@ -40,7 +40,7 @@ class BooksApp extends React.Component {
                   return b
                 }
               }))
-            }), () => console.log('search', this.state.searchedBooks))
+            }))
           }
         })
     } else {
@@ -51,7 +51,6 @@ class BooksApp extends React.Component {
   }
 
   handleSelect = (shelf, book) => {
-    console.log('select', shelf, book)
     BooksAPI.update(book.id, shelf)
       .then(() => (this.setState((prevstate) => ({
         books: prevstate.books.filter(b => {
@@ -70,7 +69,7 @@ class BooksApp extends React.Component {
     this.setState(prevState => ({
       // If a book is already on the homepage and its shelf is changed on the searchpage, remove it and add incoming one
       books: [...prevState.books.filter(b => b.id !== book.id), book]
-    }), () => console.log('selctUpdate', this.state.books))
+    }))
   }
 
   render() {

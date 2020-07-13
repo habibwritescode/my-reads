@@ -1,6 +1,5 @@
 import React from 'react'
 import Book from './Book'
-// import PropTypes from 'prop-types'
 
 const CurrentlyReading = (props) => {
     const currentlyReading = props.books.filter(book => book.shelf === 'currentlyReading')

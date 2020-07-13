@@ -32,7 +32,7 @@ class Book extends React.Component {
                         : ''
                     }
                 </div>
-            </li >
+            </li>
         )
     }
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import Book from './Book'
-// import PropTypes from 'prop-types'
 
 const WantToRead = (props) => {
     const wantToRead = props.books.filter(book => book.shelf === 'wantToRead')
