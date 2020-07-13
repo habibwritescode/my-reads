@@ -68,7 +68,8 @@ class BooksApp extends React.Component {
   handleSelectSearchPage = (value, book) => {
     book.shelf = value
     this.setState(prevState => ({
-      books: [...prevState.books, book]
+      // If a book is already on the homepage and its shelf is changed on the searchpage, remove it and add incoming one
+      books: [...prevState.books.filter(b => b.id !== book.id), book]
     }), () => console.log('selctUpdate', this.state.books))
   }
 
