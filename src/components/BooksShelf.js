@@ -1,7 +1,5 @@
 import React from 'react'
-import CurrentlyReading from './CurrentlyReading'
-import WantToRead from './WantToRead'
-import Read from './Read'
+import Shelf from './Shelf'
 import { Link } from 'react-router-dom'
 
 const BooksShelf = (props) => {
@@ -15,15 +13,15 @@ const BooksShelf = (props) => {
                 <div>
                     <div className="bookshelf">
                         <h2 className="bookshelf-title">Currently Reading</h2>
-                        <CurrentlyReading books={books} handleSelect={props.handleSelect} />
+                        <Shelf books={books} shelf='currentlyReading' handleSelect={props.handleSelect} />
                     </div>
                     <div className="bookshelf">
                         <h2 className="bookshelf-title">Want to Read</h2>
-                        <WantToRead books={books} handleSelect={props.handleSelect} />
+                        <Shelf books={books} shelf='wantToRead' handleSelect={props.handleSelect} />
                     </div>
                     <div className="bookshelf">
                         <h2 className="bookshelf-title">Read</h2>
-                        <Read books={books} handleSelect={props.handleSelect} />
+                        <Shelf books={books} shelf='read' handleSelect={props.handleSelect} />
                     </div>
                 </div>
             </div>

@@ -11,13 +11,9 @@ class BooksApp extends React.Component {
     searchedBooks: []
   }
 
-  componentDidMount() {
-    BooksAPI.getAll()
-      .then(books => {
-        this.setState({
-          books: books
-        })
-      })
+  async componentDidMount() {
+    const books = await BooksAPI.getAll();
+    this.setState({ books });
   }
 
   search = (query) => {
@@ -50,9 +46,10 @@ class BooksApp extends React.Component {
     }
   }
 
-  handleSelect = (shelf, book) => {
-    BooksAPI.update(book.id, shelf)
-      .then(() => (this.setState((prevstate) => ({
+  handleSelect = async (shelf, book) => {
+    await BooksAPI.update(book, shelf);
+
+      this.setState((prevstate) => ({
         books: prevstate.books.filter(b => {
           if (b.id === book.id) {
             return (book.shelf = shelf);
@@ -60,12 +57,14 @@ class BooksApp extends React.Component {
             return (book);
           }
         })
-      }))))
+      }))
   }
 
   // Add books from search page to bookshelf
-  handleSelectSearchPage = (value, book) => {
-    book.shelf = value
+  handleSelectSearchPage = async (shelf, book) => {
+    await BooksAPI.update(book, shelf);
+
+    book.shelf = shelf
     this.setState(prevState => ({
       // If a book is already on the homepage and its shelf is changed on the searchpage, remove it and add incoming one
       books: [...prevState.books.filter(b => b.id !== book.id), book]

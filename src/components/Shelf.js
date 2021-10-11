@@ -1,12 +1,12 @@
 import React from 'react'
 import Book from './Book'
 
-const Read = (props) => {
-    const read = props.books.filter(book => book.shelf === 'read')
+const Shelf = (props) => {
+    const books = props.books.filter(book => book.shelf === props.shelf)
     return (
         <div className="bookshelf-books">
             <ol className="books-grid">
-                {read.map(book => (
+                {books.map(book => (
                     <Book book={book} key={book.id} handleSelect={props.handleSelect} />
                 ))}
             </ol>
@@ -14,4 +14,4 @@ const Read = (props) => {
     )
 }
 
-export default Read
+export default Shelf;

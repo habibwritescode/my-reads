@@ -8,10 +8,8 @@ class SearchPage extends Component {
     }
 
     updateQuery = (query) => {
-        this.setState({
-            query: query.trim()
-        })
-        this.props.search(query)
+        this.setState({ query });
+        this.props.search(query);
     }
 
     render() {
